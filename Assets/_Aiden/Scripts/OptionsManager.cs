@@ -4,19 +4,23 @@ using System.Collections;
 
 public class OptionsManager : MonoBehaviour {
 
-	Slider mergeSlider,occlusionSlider,rotationSlider,zoomSlider,transferSlider;
+	public Slider mergeSlider,occlusionSlider,rotationSlider,zoomSlider,transferSlider;
 
 	// Use this for initialization
 	void Start () {
-		mergeSlider.value = 1;//To be changed
-		occlusionSlider.value = 1;//To be changed
-		rotationSlider.value = 1;//To be changed
-		zoomSlider.value = 1;//To be changed
-		transferSlider.value = 1;//To be changed
+		mergeSlider.value = PlayerPreferenceManager.getMerge();
+		occlusionSlider.value = PlayerPreferenceManager.getOcclusion ();
+		rotationSlider.value = PlayerPreferenceManager.getRotation ();
+		zoomSlider.value = PlayerPreferenceManager.getZoom ();
+		transferSlider.value = PlayerPreferenceManager.getTransfer ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void saveOptions()
+	{
+		PlayerPreferenceManager.setMerge (mergeSlider.value);
+		PlayerPreferenceManager.setOcclusion (occlusionSlider.value);
+		PlayerPreferenceManager.setRotation (rotationSlider.value);
+		PlayerPreferenceManager.setTransfer (transferSlider.value);
+		PlayerPreferenceManager.setZoom (zoomSlider.value);
 	}
 }
