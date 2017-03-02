@@ -23,4 +23,21 @@ public class OptionsManager : MonoBehaviour {
 		PlayerPreferenceManager.setTransfer (transferSlider.value);
 		PlayerPreferenceManager.setZoom (zoomSlider.value);
 	}
+
+	public void complementButton(string name)
+	{
+		if (name == "ZOOM") {
+			if (zoomSlider.value == 1) {
+				rotationSlider.value = 0;
+			} else {
+				rotationSlider.value = 1;
+			}
+		} else if (name == "ROTATION") {
+			if (rotationSlider.value == 1) {
+				zoomSlider.value = 0;
+			} else {
+				zoomSlider.value = 1;
+			}
+		}
+	}
 }
