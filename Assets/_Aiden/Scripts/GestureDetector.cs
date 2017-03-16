@@ -45,12 +45,21 @@ public class GestureDetector : MonoBehaviour {
 					test.transform.localScale += new Vector3 (zoomSpeed, zoomSpeed, zoomSpeed);//Increase size
 				}
 			}
+		}
 
-			//Zoom code ends
+			else if(Input.touchCount==2 && PlayerPreferenceManager.getRotation()==1)
+			{
+				//Rotation gesture
+			if (!isRotating) {
+				Vector2 startVector = Input.GetTouch (1).position - Input.GetTouch (0).position;
+				isRotating = startVector.sqrMagnitude > minDistanceBetweenFingers * minDistanceBetweenFingers;
+			} else {
+				Vector2 currentVector = Input.GetTouch (1).position - Input.GetTouch (0).position;
 
-			//Rotation code
-				
-		} else if(PlayerPreferenceManager.getTransfer()==1) {
+			}
+			}
+
+			else if(PlayerPreferenceManager.getTransfer()==1) {
 			//Transfer Gesture
 			Vector3 mousePosition = Input.mousePosition;
 			mousePosition.z = 10;//Distance from camera to screen,Camera at -10 and screen at 0
