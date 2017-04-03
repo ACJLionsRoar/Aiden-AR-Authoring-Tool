@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Marker-5" size="10.000000 10.000000" />
-    <ImageTarget name="Marker-4" size="10.000000 10.000000" />
-    <ImageTarget name="Marker-3" size="10.000000 10.000000" />
-    <ImageTarget name="Marker-2" size="10.000000 10.000000" />
-    <ImageTarget name="Marker-1" size="1.000000 1.000000" />
-    <ImageTarget name="nopark" size="10.000000 10.000000" />
-    <ImageTarget name="Road_Sign_No_Entry" size="10.000000 10.000000" />
+    <ImageTarget name="Marker-1" size="10.000000 10.000000" />
     <ImageTarget name="Switzerland_Flag" size="10.000000 6.760375" />
     <ImageTarget name="SriLanka_Flag" size="10.000000 5.633333" />
     <ImageTarget name="Brazil-flag" size="10.000000 6.725490" />
