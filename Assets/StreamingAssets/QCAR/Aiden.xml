@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="Street_Sign_1" size="10.000000 10.000000" />
+    <ImageTarget name="Australia" size="10.000000 5.364000" />
     <ImageTarget name="Street_Sign_3" size="10.000000 10.000000" />
     <ImageTarget name="Merge_2" size="10.000000 4.403670" />
     <ImageTarget name="Merge_1" size="10.000000 4.403670" />
     <ImageTarget name="Street_Sign_2" size="10.000000 10.000000" />
-    <ImageTarget name="s1" size="10.000000 10.000000" />
     <ImageTarget name="AR-Markers-1" size="10.000000 10.000000" />
     <ImageTarget name="AR-Markers-3" size="10.000000 10.000000" />
     <ImageTarget name="AR-Markers-4" size="10.000000 10.000000" />
@@ -14,7 +15,6 @@
     <ImageTarget name="Switzerland_Flag" size="10.000000 6.760375" />
     <ImageTarget name="SriLanka_Flag" size="10.000000 5.633333" />
     <ImageTarget name="Brazil-flag" size="10.000000 6.725490" />
-    <ImageTarget name="UK_Flag" size="10.000000 5.000000" />
     <ImageTarget name="indian-flag" size="10.000000 6.666667" />
     <ImageTarget name="100rs" size="10.000000 4.400000" />
   </Tracking>
