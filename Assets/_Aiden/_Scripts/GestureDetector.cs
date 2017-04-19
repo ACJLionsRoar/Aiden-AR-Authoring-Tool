@@ -9,7 +9,7 @@ using System.Collections;
 		AidenObject[] objectsDetected;
 		bool isRotating;
 		Vector2 startVector;
-		float minDistanceBetweenFingers,minAngle,zoomSpeed;
+		float minDistanceBetweenFingers,minAngle,zoomSpeed,rotGestureWidth,rotAngleMinimum;
 
 		[SerializeField]
 		public float transferSensitivity;
@@ -19,6 +19,7 @@ using System.Collections;
 			minDistanceBetweenFingers = 10;
 			minAngle = 10;
 			objectsDetected = FindObjectsOfType<AidenObject> ();
+			rotAngleMinimum = 2;
 		}
 		
 		// Update is called once per frame
@@ -80,15 +81,28 @@ using System.Collections;
 
 		void detectRotation()
 		{
-			if (objectsDetected != null) {
-				//Rotation gesture
-				if (!isRotating) {
-					Vector2 startVector = Input.GetTouch (1).position - Input.GetTouch (0).position;
-					isRotating = startVector.sqrMagnitude > minDistanceBetweenFingers * minDistanceBetweenFingers;
-				} else {
-					Vector2 currentVector = Input.GetTouch (1).position - Input.GetTouch (0).position;
+			if (!isRotating) {
+				startVector = Input.GetTouch (1).position - Input.GetTouch (0).position;
+				isRotating = startVector.sqrMagnitude > rotGestureWidth * rotGestureWidth;
+			} 
+			else {
+					Vector2 currVector = Input.GetTouch (1).position - Input.GetTouch (0).position;
+					float angleOffset = Vector2.Angle (startVector, currVector);
+					Vector3 LR = Vector3.Cross (startVector, currVector);
+
+					if (angleOffset > rotAngleMinimum) {
+						if (LR.z > 0) {
+							// Anticlockwise turn equal to angleOffset.
+							testText.text="ANTI";
+						} else if (LR.z < 0) {
+							// Clockwise turn equal to angleOffset.
+							testText.text="CLOCK";
+						}
+					} 
+					else {
+						isRotating = false;
+					}
 				}
-			}
 		}
 
 		void detectTransfer()
