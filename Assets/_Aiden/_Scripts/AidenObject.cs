@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class AidenObject : MonoBehaviour
+{
+	public bool isActive;
 
-	public class AidenObject : MonoBehaviour
+	void Start()
 	{
-		
+		isActive = true;
 	}
+}

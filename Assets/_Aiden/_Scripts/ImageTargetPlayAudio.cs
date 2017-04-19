@@ -25,13 +25,17 @@ public class ImageTargetPlayAudio : MonoBehaviour,ITrackableEventHandler
 				newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
 			{
 				// Play audio when target is found
-				Debug.Log("Play Music");
+				foreach (Transform child in transform) {
+					child.GetComponent<AidenObject> ().isActive = true;//Set aiden object as Active
+				}
 				GetComponent<AudioSource>().Play();
 			}
 			else
 			{
 				// Stop audio when target is lost
-				Debug.Log("Stop Music");
+				foreach (Transform child in transform) {
+					child.GetComponent<AidenObject> ().isActive = false;//Set aiden object as InActive
+				}
 				GetComponent<AudioSource>().Stop();
 			}
 		}   
