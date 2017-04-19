@@ -19,7 +19,7 @@ using System.Collections;
 			minDistanceBetweenFingers = 10;
 			minAngle = 10;
 			objectsDetected = FindObjectsOfType<AidenObject> ();
-			rotAngleMinimum = 2;
+			rotAngleMinimum = 2.5f;
 		}
 		
 		// Update is called once per frame
@@ -90,13 +90,28 @@ using System.Collections;
 					float angleOffset = Vector2.Angle (startVector, currVector);
 					Vector3 LR = Vector3.Cross (startVector, currVector);
 
-					if (angleOffset > rotAngleMinimum) {
+				if (angleOffset > rotAngleMinimum) {
+					if (angleOffset > 18) {
+						angleOffset = 18;
+					}
 						if (LR.z > 0) {
 							// Anticlockwise turn equal to angleOffset.
-							testText.text="ANTI";
+							foreach (AidenObject child in objectsDetected) {
+								if (child.isActive) {
+									Vector3 rotationVector = child.transform.rotation.eulerAngles;
+									rotationVector.y -= angleOffset/10;
+									child.transform.rotation = Quaternion.Euler (rotationVector);
+								}
+							}
 						} else if (LR.z < 0) {
 							// Clockwise turn equal to angleOffset.
-							testText.text="CLOCK";
+							foreach (AidenObject child in objectsDetected) {
+								if (child.isActive) {
+									Vector3 rotationVector = child.transform.rotation.eulerAngles;
+									rotationVector.y += angleOffset/10;
+									child.transform.rotation = Quaternion.Euler (rotationVector);
+								}
+							}
 						}
 					} 
 					else {
@@ -112,8 +127,10 @@ using System.Collections;
 				Vector3 mousePosition = Input.mousePosition * transferSensitivity;
 				mousePosition.z = 10;//Distance from camera to screen,Camera at -10 and screen at 0
 				foreach (AidenObject child in objectsDetected) {
-					child.transform.position = Camera.main.ScreenToWorldPoint (mousePosition);
-					child.transform.position = new Vector3 (child.transform.position.x, child.transform.position.y,5);
+					if (child.isActive) {
+						child.transform.position = Camera.main.ScreenToWorldPoint (mousePosition);
+						child.transform.position = new Vector3 (child.transform.position.x, child.transform.position.y, 5);
+					}
 				}
 			}
 		}
