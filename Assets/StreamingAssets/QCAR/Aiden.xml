@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="Street_Sign_3" size="10.000000 10.000000" />
+    <ImageTarget name="Merge_2" size="10.000000 4.403670" />
+    <ImageTarget name="Merge_1" size="10.000000 4.403670" />
+    <ImageTarget name="Street_Sign_2" size="10.000000 10.000000" />
+    <ImageTarget name="s1" size="10.000000 10.000000" />
     <ImageTarget name="AR-Markers-1" size="10.000000 10.000000" />
     <ImageTarget name="AR-Markers-3" size="10.000000 10.000000" />
     <ImageTarget name="AR-Markers-4" size="10.000000 10.000000" />
