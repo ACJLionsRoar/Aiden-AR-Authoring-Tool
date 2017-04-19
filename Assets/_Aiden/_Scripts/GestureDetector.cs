@@ -35,7 +35,7 @@ public class GestureDetector : MonoBehaviour {
 		else if(PlayerPreferenceManager.getTransfer()==1) {
 			detectTransfer ();
 		}
-		testText.text = objectsDetected.Length + "";	
+
 	}
 		
 	void detectZoom()
@@ -55,7 +55,7 @@ public class GestureDetector : MonoBehaviour {
 			//Pinch In-Zoom Decrease
 			if (objectsDetected != null) {
 				foreach (AidenObject child in objectsDetected) {
-					if (child.transform.localScale.x >= 0.05) {
+					if (child.transform.localScale.x >= 0.00000000000000000001f) {
 						child.transform.localScale -= new Vector3 (zoomSpeed, zoomSpeed, zoomSpeed);//Decrease Size
 					} else {
 						//Pinch Out-Zoom Increase
@@ -89,7 +89,7 @@ public class GestureDetector : MonoBehaviour {
 			mousePosition.z = 10;//Distance from camera to screen,Camera at -10 and screen at 0
 			foreach (AidenObject child in objectsDetected) {
 				child.transform.position = Camera.main.ScreenToWorldPoint (mousePosition);
-				child.transform.position = new Vector3 (child.transform.position.x, child.transform.position.y,10);
+				child.transform.position = new Vector3 (child.transform.position.x, child.transform.position.y,5);
 			}
 		}
 	}
