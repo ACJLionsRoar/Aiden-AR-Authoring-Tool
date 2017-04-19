@@ -53,23 +53,25 @@ using System.Collections;
 			float currentTouchMagnitude = (firstTouch.position - secondTouch.position).magnitude;//Find magnitude difference of currentTouch
 			float magnitudeDifference = prevTouchMagnitude - currentTouchMagnitude;//Find difference to detect pinch-in or pinch-out
 
-			if (magnitudeDifference > 1) {
-				//Pinch In-Zoom Decrease
-				if (objectsDetected != null) {
-					foreach (AidenObject child in objectsDetected) {
-						zoomSpeed = child.transform.localScale.x / 20;
-						if (child.transform.localScale.x >= (child.transform.localScale.x/8)) {
-							if(child.isActive)
-							{
+			foreach (AidenObject child in objectsDetected) {
+				zoomSpeed = child.transform.localScale.x / 20;
+				if (magnitudeDifference > 1) {
+					//Pinch In-Zoom Decrease
+					if (objectsDetected != null) {
+							
+						if (child.transform.localScale.x >= (child.transform.localScale.x / 3)) {
+							if (child.isActive) {
 								child.transform.localScale -= new Vector3 (zoomSpeed, zoomSpeed, zoomSpeed);//Decrease Size
 							}
-						} else {
-							//Pinch Out-Zoom Increase
-							if (child.transform.localScale.x <= (child.transform.localScale.x * 3)) {
-								if (child.isActive) {
-									child.transform.localScale += new Vector3 (zoomSpeed, zoomSpeed, zoomSpeed);//Increase size
-								}
-							}
+						}
+					}
+				}
+				else
+				{
+					//Pinch Out-Zoom Increase
+					if (child.transform.localScale.x <= (child.transform.localScale.x * 3)) {
+						if (child.isActive) {
+							child.transform.localScale += new Vector3 (zoomSpeed, zoomSpeed, zoomSpeed);//Increase size
 						}
 					}
 				}
